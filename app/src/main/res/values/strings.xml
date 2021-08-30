@@ -8,4 +8,5 @@
     <string name="label_hour">Hora</string>
     <string name="label_Cancel">Cancelar</string>
     <string name="label_thoughtful">Pensativo</string>
+    <string name="label_description_new_task">Nova Tarefa</string>
 </resources>
