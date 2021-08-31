@@ -9,4 +9,7 @@
     <string name="label_Cancel">Cancelar</string>
     <string name="label_thoughtful">Pensativo</string>
     <string name="label_description_new_task">Nova Tarefa</string>
+    <string name="label_edit">Editar</string>
+    <string name="label_delete">Deletar</string>
+    <string name="label_empty">WooHoo! Dia Livre!!! \n Vamos para o Moe\'s Bar</string>
 </resources>

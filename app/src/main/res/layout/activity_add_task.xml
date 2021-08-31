@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:title="@string/label_new_task"
-        app:navigationIcon="@drawable/ic_baseline_navigate_before_black_24"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_navigation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/label_new_task" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_navigate_before_black_24"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_start"
@@ -103,11 +115,12 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_homer_obs"
-        android:contentDescription="@string/label_thoughtful"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_obs"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
         app:layout_constraintBottom_toTopOf="@id/btn_cancel"
