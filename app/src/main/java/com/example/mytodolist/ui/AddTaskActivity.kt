@@ -19,6 +19,7 @@ class AddTaskActivity : AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -28,7 +29,7 @@ class AddTaskActivity : AppCompatActivity()  {
                 binding.tilTitle.text = it.title
                 binding.tilDescription.text = it.description
                 binding.tilDate.text = it.date
-                binding.tilHour.text = it.time
+                binding.tilHour.text = it.hour
             }
         }
 
@@ -39,6 +40,7 @@ class AddTaskActivity : AppCompatActivity()  {
 
         binding.tilDate.editText?.setOnClickListener {
             val datePicker = MaterialDatePicker.Builder.datePicker().build()
+
             datePicker.addOnPositiveButtonClickListener {
                 val timeZone = TimeZone.getDefault()
                 val offset = timeZone.getOffset(Date().time) * -1
@@ -51,9 +53,11 @@ class AddTaskActivity : AppCompatActivity()  {
             val timePicker = MaterialTimePicker.Builder()
                 .setTimeFormat(TimeFormat.CLOCK_24H)
                 .build()
+
             timePicker.addOnPositiveButtonClickListener {
                 val minute = if(timePicker.minute in 0..9) "0${timePicker.minute}" else timePicker.minute
                 val hour = if(timePicker.hour in 0..9) "0${timePicker.hour}" else timePicker.hour
+
                 binding.tilHour.text = "${hour}:${minute}"
 
             }
@@ -73,7 +77,7 @@ class AddTaskActivity : AppCompatActivity()  {
                 title = binding.tilTitle.text,
                 description = binding.tilDescription.text,
                 date = binding.tilDate.text,
-                time = binding.tilHour.text,
+                hour = binding.tilHour.text,
                 id = intent.getIntExtra(TASK_ID, 0)
 
             )
@@ -83,11 +87,9 @@ class AddTaskActivity : AppCompatActivity()  {
         }
 
     }
+
     companion object{
         const val TASK_ID = "task_id"
     }
 
-
 }
-
-

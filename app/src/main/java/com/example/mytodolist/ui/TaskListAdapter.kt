@@ -29,13 +29,11 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCa
 
         fun bind(item: Task){
             binding.tvTitle.text = item.title
-            binding.tvDate.text = "${item.date} ${item.time}"
+            binding.tvDate.text = "${item.date} ${item.hour}"
             binding.tvDescription.text = item.description
-            //binding.tvDescription.text = if(item.description.length.toString() > "25") "${item.description.subSequence(0..25)}..." else item.description
             binding.ivMore.setOnClickListener {
                 showPopup(item)
             }
-
         }
 
         private fun showPopup(item: Task) {
@@ -51,15 +49,10 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCa
             }
             popupMenu.show()
         }
-
     }
-
 }
 
 class DiffCallBack: DiffUtil.ItemCallback<Task>(){
-
     override fun areItemsTheSame(oldItem: Task, newItem: Task) = oldItem == newItem
-
     override fun areContentsTheSame(oldItem: Task, newItem: Task) = oldItem.id == newItem.id
-
 }

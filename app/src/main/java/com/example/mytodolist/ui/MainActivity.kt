@@ -11,7 +11,7 @@ import com.example.mytodolist.datasource.TaskDataSource
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter by lazy {TaskListAdapter()}
+    private val adapter by lazy { TaskListAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,23 +19,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.rvTasks.adapter = adapter
-
         updateList()
-
         insertListeners()
         }
 
     private fun insertListeners(){
         binding.fabButton.setOnClickListener{
             startActivityForResult(Intent(this, AddTaskActivity::class.java), CREATE_NEW_TASK)
-            updateList()
         }
+
         adapter.listenerEdit = {
             val intent = Intent(this, AddTaskActivity::class.java)
             intent.putExtra(AddTaskActivity.TASK_ID, it.id)
             startActivityForResult(intent, CREATE_NEW_TASK)
-            updateList()
         }
+
         adapter.listenerDelete = {
             TaskDataSource.deleteTask(it)
             updateList()
@@ -51,12 +49,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateList(){
         val list = TaskDataSource.getList()
-        binding.includeEmpty.emptyState.visibility =
-        if (list.isEmpty()){
-             View.VISIBLE
-        }else{
-            View.GONE
-        }
+        if (list.isEmpty()) binding.includeEmpty.emptyState.visibility =
+            View.VISIBLE else binding.includeEmpty.emptyState.visibility = View.GONE
         adapter.submitList(list)
     }
 
