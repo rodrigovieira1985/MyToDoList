@@ -4,7 +4,8 @@ Projeto de Conclusão (TodoList) do BootCamp Kotlin(Santander + Digitalinnovatio
 
 ​	
 
-![](https://github.com/rodrigovieira1985/MyToDoList/tree/master/image/image/image-20210831115959496.png)
+
+![Screenshot](image/image-20210831115959496.png)
 
 ![](image\image-20210831120419716.png)
 
